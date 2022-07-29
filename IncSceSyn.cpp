@@ -1,36 +1,4 @@
-//=============================================================================================
-// Mintaprogram: Zöld háromszög. Ervenyes 2019. osztol.
-//
-// A beadott program csak ebben a fajlban lehet, a fajl 1 byte-os ASCII karaktereket tartalmazhat, BOM kihuzando.
-// Tilos:
-// - mast "beincludolni", illetve mas konyvtarat hasznalni
-// - faljmuveleteket vegezni a printf-et kiveve
-// - Mashonnan atvett programresszleteket forrasmegjeloles nelkul felhasznalni es
-// - felesleges programsorokat a beadott programban hagyni!!!!!!! 
-// - felesleges kommenteket a beadott programba irni a forrasmegjelolest kommentjeit kiveve
-// ---------------------------------------------------------------------------------------------
-// A feladatot ANSI C++ nyelvu forditoprogrammal ellenorizzuk, a Visual Studio-hoz kepesti elteresekrol
-// es a leggyakoribb hibakrol (pl. ideiglenes objektumot nem lehet referencia tipusnak ertekul adni)
-// a hazibeado portal ad egy osszefoglalot.
-// ---------------------------------------------------------------------------------------------
-// A feladatmegoldasokban csak olyan OpenGL fuggvenyek hasznalhatok, amelyek az oran a feladatkiadasig elhangzottak 
-// A keretben nem szereplo GLUT fuggvenyek tiltottak.
-//
-// NYILATKOZAT
-// ---------------------------------------------------------------------------------------------
-// Nev    : Kászonyi Zsombor
-// Neptun : DCE2Q1
-// ---------------------------------------------------------------------------------------------
-// ezennel kijelentem, hogy a feladatot magam keszitettem, es ha barmilyen segitseget igenybe vettem vagy
-// mas szellemi termeket felhasznaltam, akkor a forrast es az atvett reszt kommentekben egyertelmuen jeloltem.
-// A forrasmegjeloles kotelme vonatkozik az eloadas foliakat es a targy oktatoi, illetve a
-// grafhazi doktor tanacsait kiveve barmilyen csatornan (szoban, irasban, Interneten, stb.) erkezo minden egyeb
-// informaciora (keplet, program, algoritmus, stb.). Kijelentem, hogy a forrasmegjelolessel atvett reszeket is ertem,
-// azok helyessegere matematikai bizonyitast tudok adni. Tisztaban vagyok azzal, hogy az atvett reszek nem szamitanak
-// a sajat kontribucioba, igy a feladat elfogadasarol a tobbi resz mennyisege es minosege alapjan szuletik dontes.
-// Tudomasul veszem, hogy a forrasmegjeloles kotelmenek megsertese eseten a hazifeladatra adhato pontokat
-// negativ elojellel szamoljak el es ezzel parhuzamosan eljaras is indul velem szemben.
-//=============================================================================================
+
 #include "framework.h"
 
 template<class T> struct Dnum { // Dual numbers for automatic derivation
@@ -560,41 +528,41 @@ public:
 		baseOb->scale			= vec3(1, 1, 0.1);
 		baseOb->rotationAxis	= vec3(-1, 0, 0);
 		baseOb->rotationAngle	= M_PI / 2;
-		//Talp tetõ
+		//Talp tetÃµ
 		Object* circleOb = new Object(gouraudShader, material0, texture, circle);
 		circleOb->translation	= vec3(0, -4.3, 0);
 		circleOb->scale			= vec3(1, 1, 1);
-		//Gömb1
+		//GÃ¶mb1
 		Object* sph1 = new Object(phongShader, material0, texture, sphere1);
 		sph1->translation		= vec3(0, -3, 0);
 		sph1->scale				= vec3(sphRad, sphRad, sphRad);
 		sph1->rotationAxis		= vec3(0, 4, 2);
 		sph1->rotationAngle		= 0;
-		//Gömb2
+		//GÃ¶mb2
 		Object* sph2 = new Object(phongShader, material0, texture, sphere2);
 		sph2->translation		= vec3(0, 0.5 + cylHeight * 4, 0);
 		sph2->scale				= vec3(sphRad*2, sphRad*2, sphRad*2);
 		sph2->rotationAxis		= vec3(0.5, 1, 0.7);
 		sph2->rotationAngle		= 0;
-		//Gömb 3
+		//GÃ¶mb 3
 		Object* sph3 = new Object(phongShader, material0, texture, sphere3);
 		sph3->translation		= vec3(0, 0.5 + cylHeight * 4, 0);
 		sph3->scale				= vec3(sphRad*2, sphRad*2, sphRad*2);
 		sph3->rotationAxis		= vec3(0.3, 0.9, 0.7);
 		sph3->rotationAngle		= 0;
-		//Rúd1
+		//RÃºd1
 		Object* cyl1 = new Object(phongShader, material0, texture, cylinder1);
 		cyl1->translation		= vec3(0, 0.5, 0);
 		cyl1->scale				= vec3(cylRad*2, cylRad*2, cylHeight*2);
 		cyl1->rotationAxis		= vec3(-1, 0, 0);
 		cyl1->rotationAngle		= M_PI / 2;
-		//Rúd2
+		//RÃºd2
 		Object* cyl2 = new Object(phongShader, material0, texture, cylinder2);
 		cyl2->translation		= vec3(0, 0.5, 0);
 		cyl2->scale				= vec3(cylRad *2, cylRad*2, cylHeight*2);
 		cyl2->rotationAxis		= vec3(-1, 0, 0);
 		cyl2->rotationAngle		= M_PI / 2;
-		//Búra
+		//BÃºra
 		Object* paraOb = new Object(phongShader, material0, texture, para);
 		paraOb->translation		= vec3(0, 1, 0);
 		paraOb->scale			= vec3(2.8, 2.8, 2.8);
@@ -686,7 +654,7 @@ void onMouseMotion(int pX, int pY) {
 // Idle event indicating that some time elapsed: do animation here
 void onIdle() {
 	static float tend = 0;
-	const float dt = 0.1f; // dt is ”infinitesimal”
+	const float dt = 0.1f; // dt is Â”infinitesimalÂ”
 	float tstart = tend;
 	tend = glutGet(GLUT_ELAPSED_TIME) / 1000.0f;
 
