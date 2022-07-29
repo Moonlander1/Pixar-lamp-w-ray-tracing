@@ -1,36 +1,4 @@
-//=============================================================================================
-// Mintaprogram: Zˆld h·romszˆg. Ervenyes 2019. osztol.
-//
-// A beadott program csak ebben a fajlban lehet, a fajl 1 byte-os ASCII karaktereket tartalmazhat, BOM kihuzando.
-// Tilos:
-// - mast "beincludolni", illetve mas konyvtarat hasznalni
-// - faljmuveleteket vegezni a printf-et kiveve
-// - Mashonnan atvett programresszleteket forrasmegjeloles nelkul felhasznalni es
-// - felesleges programsorokat a beadott programban hagyni!!!!!!! 
-// - felesleges kommenteket a beadott programba irni a forrasmegjelolest kommentjeit kiveve
-// ---------------------------------------------------------------------------------------------
-// A feladatot ANSI C++ nyelvu forditoprogrammal ellenorizzuk, a Visual Studio-hoz kepesti elteresekrol
-// es a leggyakoribb hibakrol (pl. ideiglenes objektumot nem lehet referencia tipusnak ertekul adni)
-// a hazibeado portal ad egy osszefoglalot.
-// ---------------------------------------------------------------------------------------------
-// A feladatmegoldasokban csak olyan OpenGL fuggvenyek hasznalhatok, amelyek az oran a feladatkiadasig elhangzottak 
-// A keretben nem szereplo GLUT fuggvenyek tiltottak.
-//
-// NYILATKOZAT
-// ---------------------------------------------------------------------------------------------
-// Nev    : K·szonyi Zsombor	
-// Neptun : DCE2Q1
-// ---------------------------------------------------------------------------------------------
-// ezennel kijelentem, hogy a feladatot magam keszitettem, es ha barmilyen segitseget igenybe vettem vagy
-// mas szellemi termeket felhasznaltam, akkor a forrast es az atvett reszt kommentekben egyertelmuen jeloltem.
-// A forrasmegjeloles kotelme vonatkozik az eloadas foliakat es a targy oktatoi, illetve a
-// grafhazi doktor tanacsait kiveve barmilyen csatornan (szoban, irasban, Interneten, stb.) erkezo minden egyeb
-// informaciora (keplet, program, algoritmus, stb.). Kijelentem, hogy a forrasmegjelolessel atvett reszeket is ertem,
-// azok helyessegere matematikai bizonyitast tudok adni. Tisztaban vagyok azzal, hogy az atvett reszek nem szamitanak
-// a sajat kontribucioba, igy a feladat elfogadasarol a tobbi resz mennyisege es minosege alapjan szuletik dontes.
-// Tudomasul veszem, hogy a forrasmegjeloles kotelmenek megsertese eseten a hazifeladatra adhato pontokat
-// negativ elojellel szamoljak el es ezzel parhuzamosan eljaras is indul velem szemben.
-//=============================================================================================
+
 #include "framework.h"
 
 float myT  = M_PI / 11;
@@ -292,7 +260,7 @@ struct Paraboloid : public Intersectable {
 		vec4 q2 = quat(normalize(secRD), myT);
 		vec4 q3 = quat(normalize(thiRD), myT);
 		
-		/* A kvaterniÛs forgat·sok alapj·t a Teams-es konzult·ciÛbÛl szereztem (Csala B·lint). */
+		/* A kvaterni√≥s forgat√°sok alapj√°t a Teams-es konzult√°ci√≥b√≥l szereztem (Csala B√°lint). */
 		vec3 s	= quatRot(q3, quatRot(q2, quatRot(q1, ray.start - rotOrigin) - mid->center + rotOrigin) - top->center + mid->center);
 		vec3 d	= quatRot(q3, quatRot(q2, quatRot(q1, ray.dir)));
 		vec3 nC = center - top->center;
@@ -316,7 +284,7 @@ struct Paraboloid : public Intersectable {
 		hit.material = material;
 
 		hit.normal = normalize(vec3((s.x + d.x * hit.t - center.x) * 2 / curve, -1, (s.z + d.z * hit.t - center.z) * 2 / curve));
-		hit.normal = quatRot(quatInv(q1), quatRot(quatInv(q2), quatRot(quatInv(q3), hit.normal))); //Konzult·ciÛ alapj·n
+		hit.normal = quatRot(quatInv(q1), quatRot(quatInv(q2), quatRot(quatInv(q3), hit.normal))); //Konzult√°ci√≥ alapj√°n
 		calculateFocalPoint(q1, q2, q3);
 		return hit;
 	}
@@ -385,18 +353,18 @@ public:
 		float r = 0.07;
 
 		//Statikus elemek
-		objects.push_back(new Plain		 (vec3(0,   -0.2, 0), normalize(vec3(0.0, 1, 0.0)), deskMat));				//SÕK
-		objects.push_back(new Cylinder	 (vec3(0,   -0.4, 0), 0.24f, 0.05f, black, 0));								//TartÛ	
-		objects.push_back(new PlainCircle(vec3(0, -0.175, 0), normalize(vec3(0.0, 1, 0.0)), cylMat, 0.24f, false));	//Fedı
-		objects.push_back(new Sphere(	  vec3(0, -0.325, 0), r, sphMat, 0));									//1. gˆmb
-		//MozgÛ elemek
-		PointLight* lampLight = new PointLight(vec3(0,1000,0), vec3(2, 2, 2));										//L·mpa pont fÈnye
+		objects.push_back(new Plain		 (vec3(0,   -0.2, 0), normalize(vec3(0.0, 1, 0.0)), deskMat));				//S√çK
+		objects.push_back(new Cylinder	 (vec3(0,   -0.4, 0), 0.24f, 0.05f, black, 0));								//Tart√≥	
+		objects.push_back(new PlainCircle(vec3(0, -0.175, 0), normalize(vec3(0.0, 1, 0.0)), cylMat, 0.24f, false));	//Fed√µ
+		objects.push_back(new Sphere(	  vec3(0, -0.325, 0), r, sphMat, 0));									//1. g√∂mb
+		//Mozg√≥ elemek
+		PointLight* lampLight = new PointLight(vec3(0,1000,0), vec3(2, 2, 2));										//L√°mpa pont f√©nye
 
-		Sphere* sph1    = new Sphere(	 vec3(0,-0.325 + h      ,0), r   ,  sphMat, 1);								//2. gˆmb
-		Sphere* sph2	= new Sphere(	 vec3(0,-0.325 + 2 * h  ,0), r   ,	sphMat, 2, sph1);						//3. gˆmb
-		Cylinder* cyl1 = new Cylinder( vec3(0,-0.325	        ,0), 0.03, h,cylMat, 1);							//1. r˙d
-		Cylinder* cyl2 = new Cylinder( vec3(0,-0.325 + h		,0), 0.03, h,cylMat, 2);							//2. r˙d
-		Paraboloid* par = new Paraboloid(vec3(0,-0.325 + 2*h + r,0), 0.4 , 0.03,parMat, sph1, sph2, lampLight);		//B˙ra
+		Sphere* sph1    = new Sphere(	 vec3(0,-0.325 + h      ,0), r   ,  sphMat, 1);								//2. g√∂mb
+		Sphere* sph2	= new Sphere(	 vec3(0,-0.325 + 2 * h  ,0), r   ,	sphMat, 2, sph1);						//3. g√∂mb
+		Cylinder* cyl1 = new Cylinder( vec3(0,-0.325	        ,0), 0.03, h,cylMat, 1);							//1. r√∫d
+		Cylinder* cyl2 = new Cylinder( vec3(0,-0.325 + h		,0), 0.03, h,cylMat, 2);							//2. r√∫d
+		Paraboloid* par = new Paraboloid(vec3(0,-0.325 + 2*h + r,0), 0.4 , 0.03,parMat, sph1, sph2, lampLight);		//B√∫ra
 		objects.push_back(cyl1);
 		objects.push_back(cyl2);
 		objects.push_back(sph1);
